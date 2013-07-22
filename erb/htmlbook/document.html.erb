@@ -1,19 +1,21 @@
 <%#encoding:UTF-8%><!DOCTYPE html>
 
-<html xmlns="<%= attr :xmlns, 'http://www.w3.org/1999/xhtml' %>">
+<html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.w3.org/1999/xhtml ../schema/htmlbook.xsd"
+xmlns="http://www.w3.org/1999/xhtml">
 
   <head>
     <title><%= doctitle %></title>
     <meta name="<%= doctitle %>" content="text/html; charset=utf-8"/>
   </head>
-<body<%= @id && %( id="#{@id}") %> class="book">
+<body<%= @id && %( id="#{@id}") %> class="book" data-type="book">
   <h1><%= @header.title %></h1>
-  <figure class="cover">
+  <figure data-type="cover">
     <img src="cover.png"/>
   </figure>
-  <section class="titlepage">
+  <section data-type="titlepage">
     <h1><%= @header.title %></h1>
-    <% if attr? :author %><h2 class="author"><%= attr :author %></h2><% end %>
+    <% if attr? :author %><h2 data-type="author"><%= attr :author %></h2><% end %>
   </section>
 <%= content %>
 </body>
