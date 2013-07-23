@@ -1,0 +1,7 @@
+<%#encoding:UTF-8%><%
+idx = attr 'index'
+if @type == :xref
+%><%= %(<a href="#ftn#{idx}">#{idx}</a>) %><%
+else
+%><%= %(<a href="#ftn#{idx}" id="ftnref#{idx}" data-type="noteref">#{idx}</a>) %><%
+end %>

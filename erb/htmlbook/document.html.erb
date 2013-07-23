@@ -18,5 +18,10 @@ xmlns="http://www.w3.org/1999/xhtml">
     <% if attr? :author %><h2 data-type="author"><%= attr :author %></h2><% end %>
   </section>
 <%= content %>
+<% unless !footnotes? %>
+<div data-type="footnotes"><% footnotes.each do |fn| %><%= %(
+<aside data-type="footnote"><sup><a href="#ftnref#{fn.index}">#{fn.index}</a></sup> #{fn.text}</aside>) %><% end %>
+</div><%
+end %>
 </body>
 </html>
