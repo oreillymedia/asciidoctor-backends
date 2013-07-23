@@ -5,27 +5,5 @@ caption_num = @document.attributes["figure-number"]
 section_num = @next_section_index += 1
 @caption = "#{caption_title} #{section_num}-#{caption_num}. "%></span><%= title %></figcaption><%
 end %>
-
-<%= 
-    if found[:macroish] && result.include?('image:')
-      # image:filename.png[Alt Text]
-      result.gsub!(REGEXP[:image_macro]) {
-        # alias match for Ruby 1.8.7 compat
-        m = $~
-        # honor the escape
-        if m[0].start_with? '\\'
-          next m[0][1..-1]
-        end
-        target = sub_attributes(m[1])
-   @document.register(:images, target)
-        attrs = parse_attributes(unescape_bracketed_text(m[2]), ['alt', 'width', 'height'])
-        if !attrs['alt']
-          attrs['alt'] = "BEARS"
-        end
-        Inline.new(self, :image, nil, :target => target, :attributes => attrs).render
-      }
-    end
-%>
-
-<img src="<%= image_uri(attr 'target') %>"<%= attr?('alt') ? %( alt="#{attr 'alt'}") : nil %><%= attr?('width') ? %( width="#{attr 'width'}") : nil %>>
+<img src="<%= image_uri(attr 'target') %>"<%= attr?('alt') ? %( alt="#{attr 'alt'}") : nil %><%= attr?('width') ? %( width="#{attr 'width'}") : nil %>/>
 </figure>
