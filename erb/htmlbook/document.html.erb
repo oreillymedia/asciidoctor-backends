@@ -17,6 +17,20 @@ xmlns="http://www.w3.org/1999/xhtml">
     <h1><%= @header.title %></h1>
     <% if attr? :author %><h2 data-type="author"><%= attr :author %></h2><% end %>
   </section>
+  <section data-type="copyright-page">
+    <h1><%= @header.title %></h1>
+    <% if attr? :author %><p class="author">by <%= attr :author %></p><% end %>
+  </section>
+<% if @level == 1 && @role == 'dedication' %>
+<section class="dedication" data-type="dedication"<%= @id && %( id="#{@id}") %>>
+<%= %(<h#{@level}) %>><%= title %><%= %(</h#{@level}>) %>
+
+<%= content %>
+</section><% end %>
+<nav data-type="toc" class="<%= attr 'toc-class', 'toc' %>" id="toc">
+<h1><%= attr 'toc-title' %></h1>
+<%= ::Asciidoctor::HTMLBook::DocumentTemplate.outline(self, (attr :toclevels, 2).to_i) %>
+</nav>
 <%= content %>
 <% unless !footnotes? %>
 <div data-type="footnotes"><% footnotes.each do |fn| %><%= %(
