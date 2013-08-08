@@ -3,7 +3,7 @@
 <caption><span data-type="label"><%= caption_title = @document.attributes["table-caption"]
 caption_num = @document.attributes["table-number"]
 section_num = @next_section_index += 1
-@caption = "#{caption_title} #{section_num}-#{caption_num}. "%></span><%= title %></caption><% end %><%
+@caption = "#{caption_title} #{section_num}-#{caption_num}."%></span> <%= title %></caption><% end %><%
 if (attr 'rowcount') >= 0 %>
 <colgroup><%
 if attr? 'autowidth-option' %><%
@@ -12,7 +12,7 @@ if attr? 'autowidth-option' %><%
 end %><%
 else %><%
 @columns.each do |col| %>
-<col style="width:<%= col.attr 'colpcwidth' %>%;"><%
+<col style="width:<%= col.attr 'colpcwidth' %>%;"/><%
 end %><%
 end %>
 </colgroup><%

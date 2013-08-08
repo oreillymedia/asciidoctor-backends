@@ -48,6 +48,6 @@ end %>
 </div><%
 else %>
 <dl><% content.each do |dt, dd| %>
-<dt><% dt.text %></dt>
+<dt><%= dt.text %></dt>
 <dd><p><%= dd.text %></p></dd><% end %>
 </dl><% end %>
