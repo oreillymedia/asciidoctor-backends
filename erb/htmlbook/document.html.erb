@@ -32,10 +32,15 @@ xmlns="http://www.w3.org/1999/xhtml">
 <%= ::Asciidoctor::HTMLBook::DocumentTemplate.outline(self, (attr :toclevels, 2).to_i) %>
 </nav>
 <%= content %>
-<% unless !footnotes? %>
-<div data-type="footnotes"><% footnotes.each do |fn| %><%= %(
-<aside data-type="footnote"><sup><a href="#ftnref#{fn.index}">#{fn.index}</a></sup> #{fn.text}</aside>) %><% end %>
-</div><%
+<% unless @references[:indexterms].empty? %>
+<section data-type="index" class="index" id="index">
+  <h1>Index</h1>
+      <div data-type="indexbody" class="indexbody">
+        <div data-type="indexgroup" class="indexgroup">
+
+</div>
+</div>
+</section><% 
 end %>
 </body>
 </html>
