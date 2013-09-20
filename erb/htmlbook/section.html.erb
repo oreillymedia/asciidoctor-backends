@@ -1,27 +1,31 @@
-<%#encoding:UTF-8%><%
-if @level.zero? %><h1<%= @id && %( id="#{@id}") %>><%= title %></h1>
-<%= content.chomp %>
-<% else %><%
+<%#encoding:UTF-8%>
+<% if @level == 0 %>
+<div data-type="part"<%= @id && %( id="#{@id}") %>>
+<%= %(<h1) %>><%= title %><%= %(</h1>) %>
+
+<%= content %>
+</div>
+<% else %><% 
 title_html = %(#{@caption}#{title})
-title_html = %(<a name="#{@id}" class="anchor" href="##{@id}">#{title_html}</a>) if (attr? 'anchors')
+title_html = %(<a name="#{@id}" class="anchor" href="#{@id}">#{title_html}</a>) if (attr? 'anchors')
 title_html = %(#{sectnum} #{title_html}) if !@special && (attr? 'numbered') && @level < 4
 %>
 
 <% if @level == 1 %>
 <% if sectname == 'preface[@role="foreword"]' %>
-<section class="foreword" data-type="foreword"<%= @id && %( id="#{@id}") %>>
+<section data-type="foreword"<%= @id && %( id="#{@id}") %>>
 <%= %(<h#{@level}) %>><%= title %><%= %(</h#{@level}>) %>
 
 <%= content %>
 </section>
 <% elsif sectname == 'preface' %>
-<section class="preface" data-type="preface"<%= @id && %( id="#{@id}") %>>
+<section data-type="preface"<%= @id && %( id="#{@id}") %>>
 <%= %(<h#{@level}) %>><%= title %><%= %(</h#{@level}>) %>
 
 <%= content %>
 </section>
 <% elsif sectname == 'appendix' %>
-<section class="appendix" data-type="appendix"<%= @id && %( id="#{@id}") %>>
+<section data-type="appendix"<%= @id && %( id="#{@id}") %>>
 <%= %(<h#{@level}) %>><%= title %><%= %(</h#{@level}>) %>
 
 <%= content %>
@@ -35,28 +39,28 @@ title_html = %(#{sectnum} #{title_html}) if !@special && (attr? 'numbered') && @
 <% end %><% end %>
 
 <% if @level == 2 %>
-<section class="sect1" data-type="sect1"<%= @id && %( id="#{@id}") %>>
+<section data-type="sect1"<%= @id && %( id="#{@id}") %>>
 <h1><%= title %></h1>
 <%= content %>
 </section>
 <% end %>
 
 <% if @level == 3 %>
-<section class="sect2" data-type="sect2"<%= @id && %( id="#{@id}") %>>
+<section data-type="sect2"<%= @id && %( id="#{@id}") %>>
 <h2><%= title %></h2>
 <%= content %>
 </section>
 <% end %>
 
 <% if @level == 4 %>
-<section class="sect3" data-type="sect3"<%= @id && %( id="#{@id}") %>>
+<section data-type="sect3"<%= @id && %( id="#{@id}") %>>
 <h3><%= title %></h3>
 <%= content %>
 </section>
 <% end %>
 
 <% if @level == 5 %>
-<section class="sect4" data-type="sect4"<%= @id && %( id="#{@id}") %>>
+<section data-type="sect4"<%= @id && %( id="#{@id}") %>>
 <h4><%= title %></h4>
 <%= content %>
 </section>
