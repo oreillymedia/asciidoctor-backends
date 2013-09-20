@@ -8,7 +8,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     <title><%= doctitle %></title>
     <meta name="<%= doctitle %>" content="text/html; charset=utf-8"/>
   </head>
-<body<%= @id && %( id="#{@id}") %> class="book" data-type="book">
+<body<%= @id && %( id="#{@id}") %> data-type="book">
   <h1><%= @header.title %></h1>
   <figure data-type="cover">
     <img src="cover.png"/>
@@ -19,28 +19,14 @@ xmlns="http://www.w3.org/1999/xhtml">
   </section>
   <section data-type="copyright-page">
     <h1><%= @header.title %></h1>
-    <% if attr? :author %><p class="author">by <%= attr :author %></p><% end %>
+    <% if attr? :author %><p data-type="author">by <%= attr :author %></p><% end %>
   </section>
 <% if @level == 1 && @role == 'dedication' %>
-<section class="dedication" data-type="dedication"<%= @id && %( id="#{@id}") %>>
+<section data-type="dedication"<%= @id && %( id="#{@id}") %>>
 <%= %(<h#{@level}) %>><%= title %><%= %(</h#{@level}>) %>
 
 <%= content %>
 </section><% end %>
-<nav data-type="toc" class="<%= attr 'toc-class', 'toc' %>" id="toc">
-<h1><%= attr 'toc-title' %></h1>
-<%= ::Asciidoctor::HTMLBook::DocumentTemplate.outline(self, (attr :toclevels, 2).to_i) %>
-</nav>
 <%= content %>
-<% unless @references[:indexterms].empty? %>
-<section data-type="index" class="index" id="index">
-  <h1>Index</h1>
-      <div data-type="indexbody" class="indexbody">
-        <div data-type="indexgroup" class="indexgroup">
-
-</div>
-</div>
-</section><% 
-end %>
 </body>
 </html>
