@@ -5,7 +5,7 @@ if attr?(:attribution) or attr?(:citetitle) %>
 if attr? :citetitle %>
 <cite><%= attr :citetitle %></cite><% end %><%
 if attr? :attribution %><% if attr? :citetitle %>
-<br/><% end %><%= 
+<br/><% end %><%=
 "&#8212; #{attr :attribution}" %><% end %></p>
 <% end %>
 </blockquote>
