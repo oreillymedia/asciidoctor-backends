@@ -1,8 +1,0 @@
-.videoblock id=@id class=[@style,role]
-  - if title?
-    .title #{@caption}#{title}
-  .content
-    video(src=media_uri(attr :target) width=(attr :width) height=(attr :height)
-        poster=((attr :poster) ? media_uri(attr :poster) : nil) autoplay=(option? 'autoplay')
-        controls=!(option? 'nocontrols') loop=(option? 'loop'))
-      |Your browser does not support the video tag.
